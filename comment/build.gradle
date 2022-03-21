@@ -1,8 +1,9 @@
 apply plugin: 'com.android.library'
-//apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.featherfull'
 android {
     compileSdkVersion 29
+    buildToolsVersion '29.0.3'
     defaultConfig {
         javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
         minSdkVersion 16
