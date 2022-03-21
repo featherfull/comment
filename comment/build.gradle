@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //查找控件依赖
+    api 'com.jakewharton:butterknife:5.1.1'
+    //加载图片框架
+    api 'com.github.bumptech.glide:glide:4.7.1'
+    api 'com.squareup.okhttp3:okhttp:3.3.0'
+    api 'com.google.code.gson:gson:2.6.2'
+    api 'org.greenrobot:eventbus:3.0.0'
+    api 'androidx.recyclerview:recyclerview:1.2.0-alpha05'
+    //SmartRefreshLayout
+    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7'
+    api 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7'
+    api 'com.google.android.material:material:1.3.0-alpha02'
+}

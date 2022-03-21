@@ -1,0 +1,2 @@
+include ':app', ':comment'
+rootProject.name='网络访问依赖'
