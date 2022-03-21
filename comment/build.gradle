@@ -1,4 +1,8 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'maven-publish'
+}
 
 android {
     compileSdkVersion 29
@@ -19,19 +23,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
-}
-publishing {
-    publications {
-    	// 这个mavenJava可以随便填，只是一个任务名字而已
-    	// MavenPublication必须有，这个是调用的任务类
-        mavenJava(MavenPublication) {
-        	// 这里头是artifacts的配置信息，不填会采用默认的
-            groupId = 'org.gradle.sample'
-            artifactId = 'library'
-            version = '1.1'
-
-            from components.java
+afterEvaluate {
+        publishing {
+            publications {
+                release(MavenPublication) {
+                    from components.release
+                }
+            }
         }
     }
 }
